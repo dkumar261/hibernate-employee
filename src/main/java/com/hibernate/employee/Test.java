@@ -16,6 +16,18 @@ public class Test {
 		System.out.println(sessionFactory);
 		Session session = sessionFactory.openSession();
 		
+		
+		
+		Employee emp = (Employee) session.get(Employee.class,1);
+//		Employee emp = (Employee) session.get(Employee.class,1);
+		System.out.println(emp.getFirstName());
+		System.out.println(emp.getSalaries());
+		System.out.println(emp.getSalaries().size());
+		
+	}
+	public void repo() {
+
+
 		Employee employee = new Employee();
 		employee.setEmployeeNummber(1);
 		employee.setDateOfBirth(Calendar.getInstance());
@@ -24,8 +36,8 @@ public class Test {
 		employee.setGender('M');
 		employee.setHireDate(Calendar.getInstance());
 		
-		session.beginTransaction();
-		session.saveOrUpdate(employee);
-		session.getTransaction().commit();
+//		session.beginTransaction();
+//		session.saveOrUpdate(employee);
+//		session.getTransaction().commit();
 	}
 }

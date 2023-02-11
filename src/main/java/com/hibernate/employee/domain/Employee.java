@@ -1,11 +1,16 @@
 package com.hibernate.employee.domain;
 
 import java.util.Calendar;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Table(name="EMPLOYEES")
 @Entity
@@ -16,6 +21,7 @@ public class Employee {
 	private Integer employeeNummber;
 	
 	@Column(name="BIRTH_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dateOfBirth;
 
 	@Column(name="FIRST_NAME")
@@ -28,7 +34,11 @@ public class Employee {
 	private Character gender;
 	
 	@Column(name="HIRE_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar hireDate;
+	
+	@OneToMany(mappedBy = "salaryCompositeKey.employee", cascade = { CascadeType.ALL })
+    private Set<Salary> salaries;
 	
 	public Employee() {
 		super();
@@ -82,7 +92,12 @@ public class Employee {
 	public void setHireDate(Calendar hireDate) {
 		this.hireDate = hireDate;
 	}
-	
-	
-	
+
+	public Set<Salary> getSalaries() {
+		return salaries;
+	}
+
+	public void setSalaries(Set<Salary> salaries) {
+		this.salaries = salaries;
+	}
 }

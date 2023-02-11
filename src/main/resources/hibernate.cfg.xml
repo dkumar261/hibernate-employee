@@ -13,5 +13,7 @@
         <property name="format_sql">false</property>
         
         <mapping class="com.hibernate.employee.domain.Employee"/>
+        <mapping class="com.hibernate.employee.domain.Salary"/>
+        <mapping class="com.hibernate.employee.domain.SalaryCompositeKey"/>
     </session-factory>
 </hibernate-configuration>
